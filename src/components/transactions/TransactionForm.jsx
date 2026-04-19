@@ -163,7 +163,7 @@ export default function TransactionForm({
       <div className="transaction-form__actions">
         <button
           type="submit"
-          className="transaction-form__submit"
+          className="btn btn-primary transaction-form__submit"
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Saving…' : submitLabel}

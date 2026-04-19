@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import { usePageTitle } from '../../hooks/usePageTitle'
+import { motion, AnimatePresence } from 'framer-motion'
 import Sidebar from './Sidebar'
 import Topbar from './Topbar'
 import './layout.css'
@@ -12,7 +12,6 @@ import './layout.css'
 export default function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const location = useLocation()
-  const pageTitle = usePageTitle()
 
   useEffect(() => {
     const id = requestAnimationFrame(() => {
@@ -49,12 +48,21 @@ export default function AppLayout() {
 
       <div className="app-shell__content">
         <Topbar
-          title={pageTitle}
           menuOpen={sidebarOpen}
           onMenuClick={() => setSidebarOpen((open) => !open)}
         />
         <div className="app-shell__page">
-          <Outlet />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+            >
+              <Outlet />
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </div>

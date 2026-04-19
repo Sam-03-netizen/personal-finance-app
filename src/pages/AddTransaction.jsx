@@ -43,10 +43,15 @@ export default function AddTransaction() {
   }
 
   return (
-    <div className="page add-transaction-page">
-      <div className="add-transaction-page__intro">
-        <h1>Add transaction</h1>
-        <p>Record income or spending. Fields marked required must be filled in.</p>
+    <div className="page">
+      <div className="page-header">
+        <div>
+          <p className="page-eyebrow">Transactions</p>
+          <h1>Add transaction</h1>
+          <p className="page-subtitle">
+            Record income or spending. Fields marked required must be filled in.
+          </p>
+        </div>
       </div>
       <TransactionForm
         form={form}

@@ -1,6 +1,6 @@
 import { MdMenu } from 'react-icons/md'
 
-export default function Topbar({ title, menuOpen, onMenuClick }) {
+export default function Topbar({ menuOpen, onMenuClick }) {
   return (
     <header className="topbar">
       <button
@@ -13,7 +13,6 @@ export default function Topbar({ title, menuOpen, onMenuClick }) {
       >
         <MdMenu className="topbar__menu-icon" aria-hidden />
       </button>
-      <h1 className="topbar__title">{title}</h1>
     </header>
   )
 }
